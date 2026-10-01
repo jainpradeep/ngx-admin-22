@@ -1,0 +1,17 @@
+import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
+import { NbIconModule } from "@nebular/theme";
+
+@Component({
+  selector: "ngx-slide-out",
+  styleUrls: ["./slide-out.component.scss"],
+  templateUrl: "./slide-out.component.html",
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NbIconModule],
+})
+export class SlideOutComponent {
+  @Input() showVisitorsStatistics: boolean = false;
+
+  toggleStatistics() {
+    this.showVisitorsStatistics = !this.showVisitorsStatistics;
+  }
+}

@@ -1,0 +1,12 @@
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import { NbCardModule, NbProgressBarModule } from "@nebular/theme";
+import { InteractiveProgressBarComponent } from "./interactive-progress-bar/interactive-progress-bar.component";
+
+@Component({
+  selector: "ngx-progress-bar",
+  templateUrl: "progress-bar.component.html",
+  styleUrls: ["progress-bar.component.scss"],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NbCardModule, NbProgressBarModule, InteractiveProgressBarComponent],
+})
+export class ProgressBarComponent {}

@@ -1,0 +1,17 @@
+import { NgClass } from "@angular/common";
+import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
+import { MatRipple } from "@angular/material/core";
+import { NbCardModule } from "@nebular/theme";
+
+@Component({
+  selector: "ngx-status-card",
+  styleUrls: ["./status-card.component.scss"],
+  templateUrl: "./status-card.component.html",
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NbCardModule, NgClass, MatRipple],
+})
+export class StatusCardComponent {
+  @Input() title!: string;
+  @Input() type!: string;
+  @Input() on = true;
+}

@@ -1,0 +1,26 @@
+import { Component, ChangeDetectionStrategy } from "@angular/core";
+import {
+  NbButtonModule,
+  NbCardModule,
+  NbDialogRef,
+  NbInputModule,
+} from "@nebular/theme";
+
+@Component({
+  selector: "ngx-dialog-name-prompt",
+  templateUrl: "dialog-name-prompt.component.html",
+  styleUrls: ["dialog-name-prompt.component.scss"],
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [NbCardModule, NbButtonModule, NbInputModule],
+})
+export class DialogNamePromptComponent {
+  constructor(protected ref: NbDialogRef<DialogNamePromptComponent>) {}
+
+  cancel() {
+    this.ref.close();
+  }
+
+  submit(name: string) {
+    this.ref.close(name);
+  }
+}

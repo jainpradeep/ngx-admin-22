@@ -1,0 +1,35 @@
+import { Component, Input, OnDestroy, ChangeDetectionStrategy } from "@angular/core";
+import { NbIconModule, NbListModule, NbThemeService } from "@nebular/theme";
+import { takeWhile } from "rxjs/operators";
+
+import { NgClass } from "@angular/common";
+import { TrafficList } from "@app/core/data/traffic-list";
+import { TrafficBarComponent } from "./traffic-bar/traffic-bar.component";
+
+@Component({
+  selector: "ngx-traffic-front-card",
+  styleUrls: ["./traffic-front-card.component.scss"],
+  templateUrl: "./traffic-front-card.component.html",
+  changeDetection: ChangeDetectionStrategy.Eager,
+  imports: [TrafficBarComponent, NbListModule, NbIconModule, NgClass],
+})
+export class TrafficFrontCardComponent implements OnDestroy {
+  private alive = true;
+
+  @Input() frontCardData: TrafficList[] = [];
+
+  currentTheme!: string;
+
+  constructor(private themeService: NbThemeService) {
+    this.themeService
+      .getJsTheme()
+      .pipe(takeWhile(() => this.alive))
+      .subscribe((theme) => {
+        this.currentTheme = theme.name;
+      });
+  }
+
+  ngOnDestroy() {
+    this.alive = false;
+  }
+}
